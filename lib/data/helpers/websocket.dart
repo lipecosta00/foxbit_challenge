@@ -19,15 +19,15 @@ class FoxbitWebSocket {
   int get lastId => _id - _idStepSize;
 
   FoxbitWebSocket() {
-    _socket = IOWebSocketChannel.connect('api.foxbit.com.br?origin=android');
+    _socket = IOWebSocketChannel.connect('wss://api.foxbit.com.br?origin=android');
   }
 
   void connect() {
-_socket = IOWebSocketChannel.connect(
-      Uri.parse('api.foxbit.com.br?origin=android'),
+    _socket = IOWebSocketChannel.connect(
+      Uri.parse('wss://api.foxbit.com.br?origin=android'),
     );
     _connectedByUser = true;
-       _socket.stream.listen(
+    _socket.stream.listen(
       onMessage,
       onDone: _onDone,
       cancelOnError: false,
@@ -43,7 +43,7 @@ _socket = IOWebSocketChannel.connect(
   }
 
   void send(String method, dynamic data) {
-     _socket.sink.add(prepareMessage(method, data));
+    _socket.sink.add(prepareMessage(method, data));
   }
 
   Stream<Map> get stream => streamController.stream;
@@ -69,6 +69,8 @@ _socket = IOWebSocketChannel.connect(
     if (data['o'].toString().isNotEmpty) {
       data['o'] = json.decode(data['o'].toString());
     }
+
+    print(data);
 
     streamController.add(data);
   }

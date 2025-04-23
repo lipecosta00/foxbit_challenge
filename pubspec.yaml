@@ -1,0 +1,27 @@
+name: foxbit_hiring_test_template
+description: A new Flutter project.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.2.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  flutter_clean_architecture: ^6.0.1
+  rxdart: ^0.27.7
+  web_socket_channel: ^2.2.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  lint: 2.3.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
